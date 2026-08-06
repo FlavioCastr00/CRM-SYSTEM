@@ -1,0 +1,35 @@
+# Node modules
+node_modules/
+
+# Environment variables
+.env
+.env.*
+
+# SQLite database files
+*.sqlite
+*.sqlite3
+*.db
+
+# Crawled/exported data
+exports/
+imports/
+data/
+
+# Logs
+*.log
+logs/
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# VS Code settings
+.vscode/
+
+# Temporary files
+*.tmp
+*.temp
+
+# Build/output folders
+dist/
+build/
