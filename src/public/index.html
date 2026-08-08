@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <h1>Unknown System</h1>
+        <form id="company-filter-form">
+            <div class="filter-group">
+                <label for="company-name">Company Name:</label>
+                <input type="text" id="company-name" name="company-name">
+            </div>
+            <div class="filter-group">
+                <label for="status">Status:</label>
+                <select id="status" name="status">
+                    <option value="ALL">ALL</option>
+                    <option value="NEW">NEW</option>
+                    <option value="CONTACTED">CONTACTED</option>
+                    <option value="INTERESTED">INTERESTED</option>
+                    <option value="NEGOTIATION">NEGOTIATION</option>
+                    <option value="ACTIVE">ACTIVE</option>
+                </select>
+            </div>
+            <button type="submit">Search</button>
+        </form>
+        <div id="table-container">
+            <div id="table-div">
+                <!-- The companies table shall be generated here -->
+            </div>
+        </div>
+        <script src="script.js" defer></script>
+    </body>
+</html>
