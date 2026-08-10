@@ -1,13 +1,3 @@
-LoadCompanies();
-
-document
-    .getElementById('company-filter-form')
-    .addEventListener('submit', function(event) {
-        event.preventDefault();
-        LoadCompanies();
-    }
-);
-
 async function LoadCompanies() {
     const form = document.getElementById('company-filter-form');
 
@@ -54,7 +44,7 @@ function FillCompaniesTableWithData(data) {
             </thead>
             <tbody>
                 ${data.map(company => `
-                    <tr>
+                    <tr onclick="OpenCompanyModal(${company.ID})">
                         <td>${company.ID}</td>
                         <td>${company.Name}</td>
                         <td>${company.Category ?? 'N/A'}</td>

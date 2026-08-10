@@ -50,9 +50,61 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-    res.json({
-        message: `Returning company with id ${req.params.id}`
-    });
+    try {
+        const company = db.prepare(`
+            SELECT
+                Companies.ID,
+                Companies.Name,
+                Categories.Name AS Category,
+                Companies.Neighborhood,
+                Companies.Address,
+                Companies.Email,
+                Companies.Phone,
+                Companies.Website,
+                Companies.LastContact,
+                Companies.Source,
+                Companies.Score,
+                Companies.Priority,
+                Companies.CreatedAt,
+                Companies.Status,
+                Companies.UpdatedAt,
+                Companies.Notes
+
+            FROM Companies
+            LEFT JOIN Categories
+                ON Companies.CategoryID = Categories.ID
+            WHERE Companies.ID = ?
+        `).get(req.params.id);
+
+        if (!company) {
+            return res.status(404).json({
+                error: 'Company not found'
+            });
+        }
+
+        res.json(company);
+    } catch (error) {
+        res.status(500).json({
+            error: error.message
+        });
+    }
+});
+
+router.get('/:id/contacts', (req, res) => {
+    try {
+        const contacts = db.prepare(`
+            SELECT *
+            FROM Contacts
+            WHERE CompanyID = ?
+            ORDER BY Name  
+        `).all(req.params.id);
+
+        res.json(contacts);
+    } catch (error) {
+        res.status(500).json({
+            error: error.message
+        });
+    }
 });
 
 module.exports = router;

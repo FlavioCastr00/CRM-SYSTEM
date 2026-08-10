@@ -33,6 +33,43 @@
                 <!-- The companies table shall be generated here -->
             </div>
         </div>
-        <script src="script.js" defer></script>
+        <!-- Modal -->
+        <div id="company-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 id="modal-company-name"></h2>
+                    <button id="modal-close">
+                        ×
+                    </button>
+                </div>
+                <div class="modal-navigation">
+                    <button
+                        class="modal-tab active"
+                        data-section="general"
+                        onclick="ChangeModalSection('general')">
+                        General
+                    </button>
+                    <button
+                        class="modal-tab"
+                        data-section="contacts"
+                        onclick="ChangeModalSection('contacts')">
+                        Contacts
+                    </button>
+                    <button
+                        class="modal-tab"
+                        data-section="activities">
+                        Activities
+                    </button>
+                </div>
+                <div id="modal-body">
+                    <!-- Content gets generated here -->
+                </div>
+            </div>
+        </div>
+        <script src="js/companies.js"></script>
+        <script src="js/contacts.js"></script>
+        <script src="js/activities.js"></script>
+        <script src="js/modal.js"></script>
+        <script src="js/script.js" defer></script>
     </body>
 </html>
