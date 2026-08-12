@@ -45,28 +45,3 @@ function ChangeModalSection(section) {
         LoadActivities(currentCompanyID);
     }
 }
-
-async function LoadGeneral() {
-    const response = await fetch(`/companies/${currentCompanyID}`);
-    const company = await response.json();
-    DisplayGeneral(company);
-}
-
-function DisplayGeneral(company) {
-    const modalBody = document.getElementById('modal-body');
-
-    modalBody.innerHTML = `
-        <h3>General</h3>
-
-        <p><strong>Name:</strong> ${company.Name}</p>
-        <p><strong>Category:</strong> ${company.Category ?? 'N/A'}</p>
-        <p><strong>Address:</strong> ${company.Address}</p>
-        <p><strong>Neighborhood:</strong> ${company.Neighborhood}</p>
-        <p><strong>Email:</strong> ${company.Email ?? 'N/A'}</p>
-        <p><strong>Phone:</strong> ${company.Phone ?? 'N/A'}</p>
-        <p><strong>Website:</strong> ${company.Website ?? 'N/A'}</p>
-        <p><strong>Status:</strong> ${company.Status}</p>
-        <p><strong>Score:</strong> ${company.Score}</p>
-        <p><strong>Priority:</strong> ${company.Priority}</p>
-    `;
-}

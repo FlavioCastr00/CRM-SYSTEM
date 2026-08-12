@@ -55,6 +55,7 @@ router.get('/:id', (req, res) => {
             SELECT
                 Companies.ID,
                 Companies.Name,
+                Companies.CategoryID,
                 Categories.Name AS Category,
                 Companies.Neighborhood,
                 Companies.Address,
@@ -69,7 +70,6 @@ router.get('/:id', (req, res) => {
                 Companies.Status,
                 Companies.UpdatedAt,
                 Companies.Notes
-
             FROM Companies
             LEFT JOIN Categories
                 ON Companies.CategoryID = Categories.ID
@@ -179,6 +179,57 @@ router.post('/', (req, res) => {
         res.status(201).json({
             message: 'Company created sucessfully',
             companyID: result.lastInsertRowid
+        });
+    } catch(error) {
+        res.status(500).json({
+            error: error.message
+        });
+    }
+});
+
+router.put('/:id', (req, res) => {
+    try {
+        const {
+            name,
+            categoryID,
+            website,
+            email,
+            phone,
+            address,
+            neighborhood
+        } = req.body;
+
+        const result = db.prepare(`
+            UPDATE Companies
+            SET
+                Name = @name,
+                CategoryID = @categoryID,
+                Address = @address,
+                Neighborhood = @neighborhood,
+                Email = @email,
+                Phone = @phone,
+                Website = @website,
+                UpdatedAt = CURRENT_TIMESTAMP
+            WHERE ID = @id
+        `).run({
+            id: req.params.id,
+            name,
+            categoryID,
+            address,
+            neighborhood,
+            email,
+            phone,
+            website
+        });
+
+        if (result.changes === 0) {
+            return res.status(404).json({
+                error: 'Company not found'
+            });
+        }
+
+        res.json({
+            message: 'Company updated successfully'
         });
     } catch(error) {
         res.status(500).json({

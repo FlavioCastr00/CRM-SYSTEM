@@ -1,0 +1,387 @@
+/* =========================
+   ADD COMPANY BUTTON
+========================= */
+
+#add-company-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+
+    height: 42px;
+    padding: 0 18px;
+
+    margin-bottom: 20px;
+
+    border: none;
+    border-radius: 7px;
+
+    background-color: #222;
+    color: #fff;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+
+    transition:
+        background-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.1s ease;
+}
+
+#add-company-button:hover {
+    background-color: #444;
+
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+#add-company-button:active {
+    transform: translateY(1px);
+
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+/* =========================
+   ADD COMPANY MODAL
+========================= */
+
+#add-company-modal {
+    display: none;
+
+    position: fixed;
+    z-index: 1000;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(0, 0, 0, 0.5);
+
+    align-items: center;
+    justify-content: center;
+}
+
+#add-company-modal.active {
+    display: flex;
+}
+
+
+/* =========================
+   ADD COMPANY MODAL CONTENT
+========================= */
+
+#add-company-modal .modal-content {
+    width: min(700px, 90%);
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    background: #fff;
+
+    border-radius: 10px;
+
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+}
+
+#add-company-modal .modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 18px 25px;
+
+    border-bottom: 1px solid #eee;
+}
+
+#add-company-modal .modal-header h2 {
+    margin: 0;
+
+    font-size: 20px;
+}
+
+#add-company-close {
+    border: none;
+    background: none;
+
+    font-size: 28px;
+    line-height: 1;
+
+    color: #666;
+
+    cursor: pointer;
+}
+
+#add-company-close:hover {
+    color: #111;
+}
+
+#add-company-modal .modal-body {
+    padding: 25px 30px 30px;
+}
+
+
+/* =========================
+   ADD COMPANY FORM
+========================= */
+
+#company-form {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 18px 20px;
+}
+
+
+/* Individual field */
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* Full-width fields */
+
+.form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+
+/* Labels */
+
+.form-group label {
+    margin-bottom: 7px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    color: #333;
+}
+
+
+/* Inputs */
+
+.form-group input,
+.form-group select {
+    box-sizing: border-box;
+
+    width: 100%;
+    height: 42px;
+
+    padding: 0 12px;
+
+    border: 1px solid #ccc;
+    border-radius: 6px;
+
+    background-color: #fff;
+
+    font-size: 14px;
+    color: #333;
+
+    transition:
+        border-color 0.2s,
+        box-shadow 0.2s;
+}
+
+
+/* Input focus */
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+
+    border-color: #555;
+
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.08);
+}
+
+
+/* =========================
+   FORM BUTTONS
+========================= */
+
+.form-actions {
+    grid-column: 1 / -1;
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 10px;
+
+    margin-top: 10px;
+    padding-top: 20px;
+
+    border-top: 1px solid #eee;
+}
+
+#company-form button {
+    min-width: 110px;
+    height: 40px;
+
+    padding: 0 18px;
+
+    border: none;
+    border-radius: 6px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s,
+        transform 0.1s;
+}
+
+
+/* Cancel */
+
+#add-company-cancel {
+    background-color: #e5e5e5;
+    color: #333;
+}
+
+#add-company-cancel:hover {
+    background-color: #d5d5d5;
+}
+
+
+/* Submit */
+
+#company-form button[type="submit"] {
+    background-color: #222;
+    color: white;
+}
+
+#company-form button[type="submit"]:hover {
+    background-color: #444;
+}
+
+
+/* Button click */
+
+#company-form button:active {
+    transform: scale(0.98);
+}
+
+/* Add category */
+
+.link-button {
+    display: block;
+
+    margin-top: 7px;
+    padding: 0;
+
+    border: none;
+    background: none;
+
+    color: #555;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.link-button:hover {
+    color: #111;
+    text-decoration: underline;
+}
+
+.new-category-container {
+    display: none;
+
+    margin-top: 15px;
+    padding: 15px;
+
+    border: 1px solid #ddd;
+    border-radius: 6px;
+
+    background-color: #f8f8f8;
+}
+
+.new-category-container label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.new-category-container input {
+    width: 100%;
+    box-sizing: border-box;
+
+    height: 40px;
+    padding: 0 10px;
+
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.new-category-actions {
+    display: flex;
+    justify-content: flex-end;
+
+    gap: 8px;
+
+    margin-top: 10px;
+}
+
+.new-category-actions button {
+    padding: 7px 12px;
+
+    border: none;
+    border-radius: 5px;
+
+    cursor: pointer;
+}
+
+#cancel-category-button {
+    background-color: #e5e5e5;
+}
+
+#create-category-button {
+    background-color: #222;
+    color: white;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    #add-company-modal .modal-content {
+        width: 92%;
+    }
+
+    #add-company-modal .modal-body {
+        padding: 20px;
+    }
+
+    #company-form {
+        grid-template-columns: 1fr;
+    }
+
+    .form-group.full-width {
+        grid-column: auto;
+    }
+
+    .form-actions {
+        flex-direction: column-reverse;
+    }
+
+    .form-actions button {
+        width: 100%;
+    }
+}

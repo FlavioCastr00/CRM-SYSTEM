@@ -1,0 +1,365 @@
+/* =========================
+   COMPANY MODAL
+   ========================= */
+
+#company-modal {
+    display: none;
+
+    position: fixed;
+    z-index: 1000;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(0, 0, 0, 0.5);
+
+    align-items: center;
+    justify-content: center;
+}
+
+/* Modal becomes visible */
+
+#company-modal.active {
+    display: flex;
+}
+
+/* =========================
+   MODAL CONTENT
+   ========================= */
+
+.modal-content {
+    width: 90%;
+    max-width: 1000px;
+
+    max-height: 85vh;
+
+    background-color: white;
+
+    border-radius: 10px;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* =========================
+   MODAL HEADER
+   ========================= */
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 20px 24px;
+
+    border-bottom: 1px solid #ddd;
+}
+
+
+.modal-header h2 {
+    margin: 0;
+
+    font-size: 22px;
+}
+
+
+/* =========================
+   CLOSE BUTTON
+   ========================= */
+
+#modal-close {
+    width: 36px;
+    height: 36px;
+
+    border: none;
+    border-radius: 50%;
+
+    background-color: transparent;
+
+    font-size: 26px;
+
+    cursor: pointer;
+}
+
+
+#modal-close:hover {
+    background-color: #eee;
+}
+
+
+/* =========================
+   MODAL NAVIGATION
+   ========================= */
+
+.modal-navigation {
+    display: flex;
+
+    padding: 0 24px;
+
+    border-bottom: 1px solid #ddd;
+}
+
+
+.modal-tab {
+    padding: 14px 20px;
+
+    border: none;
+    border-bottom: 3px solid transparent;
+
+    background-color: transparent;
+
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+
+    color: #666;
+
+    cursor: pointer;
+}
+
+
+.modal-tab:hover {
+    color: #222;
+}
+
+
+.modal-tab.active {
+    color: #222;
+
+    border-bottom-color: #222;
+}
+
+
+/* =========================
+   MODAL BODY
+   ========================= */
+
+#modal-body {
+    padding: 24px;
+
+    overflow-y: auto;
+    flex: 1;
+}
+
+
+#modal-body h3 {
+    margin-top: 0;
+}
+
+
+/* =========================
+   CONTACTS
+   ========================= */
+
+.contacts-list {
+    display: grid;
+
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(250px, 1fr)
+    );
+
+    gap: 16px;
+}
+
+
+.contact-card {
+    padding: 18px;
+
+    border: 1px solid #ddd;
+    border-radius: 8px;
+
+    background-color: #f8f9fa;
+}
+
+
+.contact-card h4 {
+    margin-top: 0;
+    margin-bottom: 8px;
+
+    font-size: 17px;
+}
+
+
+.contact-card p {
+    margin: 6px 0;
+
+    font-size: 14px;
+
+    color: #555;
+}
+
+
+.contact-card span {
+    display: inline-block;
+
+    margin-top: 10px;
+
+    padding: 4px 8px;
+
+    border-radius: 4px;
+
+    background-color: #e9ecef;
+
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* =========================
+   GENERAL EDIT MODE
+========================= */
+
+#general-edit-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px 20px;
+
+    padding: 20px;
+
+    border: 1px solid #ddd;
+    border-radius: 8px;
+
+    background-color: #fafafa;
+}
+
+/* Header */
+
+.edit-mode-header {
+    display: flex;
+    align-items: center;
+
+    margin-bottom: 20px;
+    padding: 12px 16px;
+
+    border-left: 4px solid #333;
+    border-radius: 4px;
+
+    background-color: #f1f1f1;
+}
+
+.edit-mode-header h3 {
+    margin: 0 0 3px 0;
+}
+
+.edit-mode-header span {
+    font-size: 13px;
+    color: #666;
+}
+
+/* Labels */
+
+#general-edit-form label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    color: #333;
+}
+
+/* Inputs */
+
+#general-edit-form input,
+#general-edit-form select {
+    box-sizing: border-box;
+
+    width: 100%;
+    height: 40px;
+
+    padding: 0 11px;
+
+    border: 1px solid #ccc;
+    border-radius: 5px;
+
+    background-color: #fff;
+
+    font-size: 14px;
+    color: #333;
+
+    transition:
+        border-color 0.2s,
+        box-shadow 0.2s;
+}
+
+#general-edit-form input:focus,
+#general-edit-form select:focus {
+    outline: none;
+
+    border-color: #555;
+
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.08);
+}
+
+.edit-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.edit-field.full-width {
+    grid-column: 1 / -1;
+}
+
+/* Actions */
+
+#general-edit-form .form-actions {
+    grid-column: 1 / -1;
+
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+
+    margin-top: 5px;
+    padding-top: 18px;
+
+    border-top: 1px solid #ddd;
+}
+
+/* Buttons */
+
+#general-edit-form button {
+    min-width: 100px;
+
+    height: 38px;
+
+    padding: 0 16px;
+
+    border: none;
+    border-radius: 5px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+/* Cancel */
+
+#general-edit-form button[type="button"] {
+    background-color: #e5e5e5;
+    color: #333;
+}
+
+#general-edit-form button[type="button"]:hover {
+    background-color: #d5d5d5;
+}
+
+/* Save */
+
+#general-edit-form button[type="submit"] {
+    background-color: #222;
+    color: #fff;
+}
+
+#general-edit-form button[type="submit"]:hover {
+    background-color: #444;
+}
