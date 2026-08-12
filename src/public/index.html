@@ -9,7 +9,15 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <h1>Unknown System</h1>
+        <div class="page-header">
+            <div>
+                <h1>Unknown System</h1>
+                <p>Companies</p>
+            </div>
+            <button id="add-company-button">
+                + Add Company
+            </button>
+        </div>
         <form id="company-filter-form">
             <div class="filter-group">
                 <label for="company-name">Company Name:</label>
@@ -33,7 +41,7 @@
                 <!-- The companies table shall be generated here -->
             </div>
         </div>
-        <!-- Modal -->
+        <!-- Detailed Info Modal -->
         <div id="company-modal" class="modal">
             <div class="modal-content">
                 <div class="modal-header">
@@ -57,7 +65,8 @@
                     </button>
                     <button
                         class="modal-tab"
-                        data-section="activities">
+                        data-section="activities"
+                        onclick="ChangeModalSection('activities')">
                         Activities
                     </button>
                 </div>
@@ -66,6 +75,106 @@
                 </div>
             </div>
         </div>
+        <!-- Add Company Form Modal -->
+         <div id="add-company-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Add Company</h2>
+                    <button id="add-company-close">
+                        ×
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="company-form">
+                        <div class="form-group full-width">
+                            <label for="new-company-name">
+                                Company Name
+                            </label>
+                            <input
+                                type="text"
+                                id="new-company-name"
+                                name="name"
+                                required
+                            >
+                        </div>
+                        <div class="form-group">
+                            <label for="category">
+                                Category
+                            </label>
+                            <select
+                                id="category"
+                                name="categoryID"
+                                required>
+                                <!-- Categories Shall Be Generated Here -->
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="neighborhood">
+                                Neighborhood
+                            </label>
+                            <input
+                                type="text"
+                                id="neighborhood"
+                                name="neighborhood"
+                                required
+                            >
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="address">
+                                Address
+                            </label>
+                            <input
+                                type="text"
+                                id="address"
+                                name="address"
+                                required
+                            >
+                        </div>
+                        <div class="form-group">
+                            <label for="email">
+                                Email
+                            </label>
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                            >
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">
+                                Phone
+                            </label>
+                            <input
+                                type="text"
+                                id="phone"
+                                name="phone"
+                            >
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="website">
+                                Website
+                            </label>
+                            <input
+                                type="text"
+                                id="website"
+                                name="website"
+                            >
+                        </div>
+                        <div class="form-actions">
+                            <button
+                                type="button"
+                                id="add-company-cancel">
+                                Cancel
+                            </button>
+                            <button type="submit">
+                                Add Company
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <script src="js/company-form.js"></script>
         <script src="js/companies.js"></script>
         <script src="js/contacts.js"></script>
         <script src="js/activities.js"></script>

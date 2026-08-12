@@ -107,4 +107,84 @@ router.get('/:id/contacts', (req, res) => {
     }
 });
 
+router.get('/:id/activities', (req, res) => {
+    try {
+        const activities = db.prepare(`
+            SELECT
+                Activities.ID,
+                Activities.CompanyID,
+                Activities.ContactID,
+                Contacts.Name AS ContactName,
+                Activities.ActivityDate,
+                Activities.Type,
+                Activities.CreatedAt,
+                Activities.Notes,
+                Activities.Result
+            FROM Activities
+            LEFT JOIN Contacts
+                ON Activities.ContactID = Contacts.ID
+            WHERE Activities.CompanyID = ?
+            ORDER BY Activities.ActivityDate DESC
+        `).all(req.params.id);
+
+        res.json(activities);
+    } catch (error) {
+        res.status(500).json({
+            error: error.message
+        });
+    }
+});
+
+router.post('/', (req, res) => {
+    try {
+        const {
+            name,
+            categoryID,
+            website,
+            email,
+            phone,
+            address,
+            neighborhood
+        } = req.body;
+
+        const result = db.prepare(`
+            INSERT INTO Companies (
+                CategoryID,
+                Name,
+                Website,
+                Email,
+                Phone,
+                Address,
+                Neighborhood
+            )
+            VALUES (
+                @categoryID,
+                @name,
+                @website,
+                @email,
+                @phone,
+                @address,
+                @neighborhood
+            )
+        `).run({
+            categoryID,
+            name,
+            website,
+            email,
+            phone,
+            address,
+            neighborhood
+        });
+
+        res.status(201).json({
+            message: 'Company created sucessfully',
+            companyID: result.lastInsertRowid
+        });
+    } catch(error) {
+        res.status(500).json({
+            error: error.message
+        });
+    }
+});
+
 module.exports = router;
