@@ -15,6 +15,12 @@ document.getElementById('add-company-button').addEventListener('click', async ()
 
 document.getElementById('add-company-close').addEventListener('click', () => {
     document.getElementById('add-company-modal').classList.remove('active');
+    document.getElementById('company-form').reset();
+});
+
+document.getElementById('add-company-cancel').addEventListener('click', () => {
+    document.getElementById('add-company-modal').classList.remove('active');
+    document.getElementById('company-form').reset();
 });
 
 async function LoadCategories() {

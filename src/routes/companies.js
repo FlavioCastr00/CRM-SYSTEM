@@ -24,7 +24,7 @@ router.get('/', (req, res) => {
             FROM Companies
             LEFT JOIN Categories
                 ON Companies.CategoryID = Categories.ID
-            WHERE 1 = 1
+            WHERE Companies.DeletedAt IS NULL
         `;
 
         const params = {};
@@ -230,6 +230,31 @@ router.put('/:id', (req, res) => {
 
         res.json({
             message: 'Company updated successfully'
+        });
+    } catch(error) {
+        res.status(500).json({
+            error: error.message
+        });
+    }
+});
+
+router.delete('/:id', (req, res) => {
+    try {
+        const result = db.prepare(`
+            UPDATE Companies
+            SET DeletedAt = CURRENT_TIMESTAMP
+            WHERE ID = ?
+            AND DeletedAt IS NULL
+        `).run(req.params.id);
+
+        if (result.changes === 0) {
+            return res.status(404).json({
+                error: 'Company not found'
+            });
+        }
+
+        res.json({
+            message: 'Company deleted sucessfully.'
         });
     } catch(error) {
         res.status(500).json({

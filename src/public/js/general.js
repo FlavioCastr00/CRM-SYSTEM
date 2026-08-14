@@ -8,22 +8,89 @@ function DisplayGeneral(company) {
     const modalBody = document.getElementById('modal-body');
 
     modalBody.innerHTML = `
-        <h3>General</h3>
+        <div class="general-header">
+            <div>
+                <h3>General Information</h3>
+                <span>Company details</span>
+            </div>
 
-        <button onclick="EnableGeneralEdit(${company.ID})">
-            Edit information
-        </button>
+            <button
+                class="edit-info-button"
+                onclick="EnableGeneralEdit(${company.ID})">
+                Edit information
+            </button>
+        </div>
 
-        <p><strong>Name:</strong> ${company.Name}</p>
-        <p><strong>Category:</strong> ${company.Category ?? 'N/A'}</p>
-        <p><strong>Address:</strong> ${company.Address}</p>
-        <p><strong>Neighborhood:</strong> ${company.Neighborhood}</p>
-        <p><strong>Email:</strong> ${company.Email ?? 'N/A'}</p>
-        <p><strong>Phone:</strong> ${company.Phone ?? 'N/A'}</p>
-        <p><strong>Website:</strong> ${company.Website ?? 'N/A'}</p>
-        <p><strong>Status:</strong> ${company.Status}</p>
-        <p><strong>Score:</strong> ${company.Score}</p>
-        <p><strong>Priority:</strong> ${company.Priority}</p>
+        <div class="general-info-grid">
+
+            <div class="info-field full-width">
+                <span class="info-label">Name</span>
+                <span class="info-value">${company.Name}</span>
+            </div>
+
+            <div class="info-field">
+                <span class="info-label">Category</span>
+                <span class="info-value">${company.Category ?? 'N/A'}</span>
+            </div>
+
+            <div class="info-field">
+                <span class="info-label">Status</span>
+                <span class="info-value status-value">${company.Status}</span>
+            </div>
+
+            <div class="info-field full-width">
+                <span class="info-label">Address</span>
+                <span class="info-value">${company.Address ?? 'N/A'}</span>
+            </div>
+
+            <div class="info-field">
+                <span class="info-label">Neighborhood</span>
+                <span class="info-value">${company.Neighborhood ?? 'N/A'}</span>
+            </div>
+
+            <div class="info-field">
+                <span class="info-label">Phone</span>
+                <span class="info-value">${company.Phone ?? 'N/A'}</span>
+            </div>
+
+            <div class="info-field">
+                <span class="info-label">Email</span>
+                <span class="info-value">${company.Email ?? 'N/A'}</span>
+            </div>
+
+            <div class="info-field">
+                <span class="info-label">Website</span>
+                <span class="info-value">
+                    ${company.Website ? `<a href="${company.Website}" target="_blank">${company.Website}</a>`
+                    : 'N/A'}
+                </span>
+            </div>
+
+            <div class="info-field">
+                <span class="info-label">Score</span>
+                <span class="info-value">${company.Score}</span>
+            </div>
+
+            <div class="info-field">
+                <span class="info-label">Priority</span>
+                <span class="info-value">${company.Priority}</span>
+            </div>
+
+        </div>
+
+        <div class="danger-zone">
+            <div>
+                <strong>Archive company</strong>
+                <span>This action can be undone in the archive tab.</span>
+            </div>
+
+            <button
+                type="button"
+                class="archive-company-button"
+                onclick="ArchiveCompany(${company.ID})">
+                Archive Company
+            </button>
+        </div>
     `;
 }
 
@@ -150,4 +217,35 @@ async function EnableGeneralEdit(companyID) {
             alert(error.message);
         }        
     });
+}
+
+async function ArchiveCompany(companyID) {
+    const confirmed = confirm('Are you sure you want to archive this company? \n\nThis action can be undone in the archive tab.');
+
+    if (!confirmed) {
+        return;
+    }
+
+    try {
+        const response = await fetch(`/companies/${companyID}`, {
+            method: 'DELETE'
+        });
+
+        const result = await response.json();
+
+        if (!response.ok) {
+            throw new Error(result.error || 'Failed to delete company.');
+        }
+
+        alert('Company deleted sucessfully.');
+
+        // Close modal
+        document.getElementById('company-modal').classList.remove('active');
+
+        // Refresh table
+        await LoadCompanies();
+    } catch(error) {
+        console.error(error);
+        alert(error.message);
+    }
 }
