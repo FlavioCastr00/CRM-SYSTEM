@@ -12,4 +12,7 @@ app.use('/companies', companyRoutes);
 const categoriesRoutes = require('./routes/categories');
 app.use('/categories', categoriesRoutes);
 
+const contactsRoutes = require('./routes/contacts');
+app.use('/', contactsRoutes);
+
 module.exports = app;

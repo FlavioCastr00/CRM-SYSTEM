@@ -1,0 +1,184 @@
+/* =========================
+   CONTACTS SECTION
+========================= */
+
+.contacts-header {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 25px;
+}
+
+.contacts-header h3 {
+    margin: 0 0 4px 0;
+
+    font-size: 20px;
+    font-weight: 600;
+    color: #222;
+}
+
+.contacts-header span {
+    font-size: 13px;
+    color: #777;
+}
+
+
+/* =========================
+   ADD CONTACT BUTTON
+========================= */
+
+#add-contact-button {
+    height: 38px;
+
+    padding: 0 16px;
+
+    border: none;
+    border-radius: 6px;
+
+    background-color: #222;
+    color: #fff;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s,
+        transform 0.1s;
+}
+
+#add-contact-button:hover {
+    background-color: #444;
+}
+
+#add-contact-button:active {
+    transform: scale(0.98);
+}
+
+
+/* =========================
+   CONTACT LIST
+========================= */
+
+.contacts-list {
+    display: flex;
+    flex-direction: column;
+
+    gap: 12px;
+}
+
+
+/* =========================
+   CONTACT CARD
+========================= */
+
+.contact-card {
+    display: grid;
+
+    grid-template-columns: 1.5fr 1fr 1.5fr 1fr auto;
+
+    align-items: center;
+
+    gap: 20px;
+
+    padding: 16px 18px;
+
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+
+    background-color: #fff;
+
+    transition:
+        border-color 0.2s,
+        box-shadow 0.2s;
+}
+
+.contact-card:hover {
+    border-color: #ccc;
+
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+}
+
+
+/* =========================
+   CONTACT NAME
+========================= */
+
+.contact-card h4 {
+    margin: 0;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    color: #222;
+}
+
+
+/* =========================
+   CONTACT INFORMATION
+========================= */
+
+.contact-card p {
+    margin: 0;
+
+    font-size: 13px;
+
+    color: #555;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+/* =========================
+   STATUS
+========================= */
+
+.contact-card span {
+    justify-self: start;
+
+    padding: 4px 9px;
+
+    border-radius: 12px;
+
+    background-color: #f0f0f0;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    color: #555;
+}
+
+
+/* =========================
+   EMPTY STATE
+========================= */
+
+.contacts-empty {
+    padding: 40px 20px;
+
+    text-align: center;
+
+    border: 1px dashed #ccc;
+    border-radius: 8px;
+
+    color: #777;
+}
+
+.contacts-empty strong {
+    display: block;
+
+    margin-bottom: 5px;
+
+    font-size: 15px;
+
+    color: #444;
+}
+
+.contacts-empty span {
+    font-size: 13px;
+}

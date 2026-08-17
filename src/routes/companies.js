@@ -90,23 +90,6 @@ router.get('/:id', (req, res) => {
     }
 });
 
-router.get('/:id/contacts', (req, res) => {
-    try {
-        const contacts = db.prepare(`
-            SELECT *
-            FROM Contacts
-            WHERE CompanyID = ?
-            ORDER BY Name  
-        `).all(req.params.id);
-
-        res.json(contacts);
-    } catch (error) {
-        res.status(500).json({
-            error: error.message
-        });
-    }
-});
-
 router.get('/:id/activities', (req, res) => {
     try {
         const activities = db.prepare(`

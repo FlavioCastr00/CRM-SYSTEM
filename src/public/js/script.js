@@ -21,5 +21,8 @@ document
         });
 
         document.querySelector('.modal-tab[data-section="general"]').classList.add('active');
+    
+        currentSection = 'general';
+        currentCompanyID = null;
     }
 );

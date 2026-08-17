@@ -1,0 +1,161 @@
+/* =========================
+   CONTACT FORM
+========================= */
+
+.contact-form-header {
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.contact-form-header h3 {
+    margin: 0 0 5px 0;
+
+    font-size: 20px;
+    font-weight: 600;
+    color: #222;
+}
+
+.contact-form-header span {
+    font-size: 13px;
+    color: #777;
+}
+
+
+/* =========================
+   FORM LAYOUT
+========================= */
+
+#contact-form {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 18px 20px;
+}
+
+
+/* =========================
+   FORM FIELDS
+========================= */
+
+#contact-form .form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+#contact-form label {
+    margin-bottom: 7px;
+
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+}
+
+#contact-form input {
+    box-sizing: border-box;
+
+    width: 100%;
+    height: 42px;
+
+    padding: 0 12px;
+
+    border: 1px solid #ccc;
+    border-radius: 6px;
+
+    background-color: #fff;
+
+    font-size: 14px;
+    color: #333;
+
+    transition:
+        border-color 0.2s,
+        box-shadow 0.2s;
+}
+
+#contact-form .form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+/* =========================
+   INPUT FOCUS
+========================= */
+
+#contact-form input:focus {
+    outline: none;
+
+    border-color: #555;
+
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.08);
+}
+
+
+/* =========================
+   FORM ACTIONS
+========================= */
+
+#contact-form .form-actions {
+    grid-column: 1 / -1;
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 10px;
+
+    margin-top: 10px;
+    padding-top: 20px;
+
+    border-top: 1px solid #eee;
+}
+
+#contact-form button {
+    min-width: 110px;
+    height: 40px;
+
+    padding: 0 18px;
+
+    border: none;
+    border-radius: 6px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s,
+        transform 0.1s;
+}
+
+
+/* =========================
+   CANCEL BUTTON
+========================= */
+
+#contact-form .form-actions button[type="button"] {
+    background-color: #e5e5e5;
+    color: #333;
+}
+
+#contact-form .form-actions button[type="button"]:hover {
+    background-color: #d5d5d5;
+}
+
+
+/* =========================
+   SUBMIT BUTTON
+========================= */
+
+#contact-form .form-actions button[type="submit"] {
+    background-color: #222;
+    color: #fff;
+}
+
+#contact-form .form-actions button[type="submit"]:hover {
+    background-color: #444;
+}
+
+#contact-form button:active {
+    transform: scale(0.98);
+}
